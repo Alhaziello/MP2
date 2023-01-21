@@ -85,8 +85,9 @@
             <div class="col-xl-5 col-md-8">
               <form
                 class="bg-white rounded-2 shadow-5-strong p-5"
-                method="post"
-                action="http://miniproj2backend-env.eba-rn2ibzbm.ap-southeast-2.elasticbeanstalk.com"
+                method="POST"
+                action="http://localhost:3000
+                "
               >
                 <!-- Username input -->
                 <div class="form-outline mb-4">
@@ -156,16 +157,18 @@
       // username input validation
 
       const usernameInput = document.querySelector('input[name="username"]');
-      usernameInput.addEventListener("change", () => {
+      usernameInput.addEventListener("blur", () => {
         const username = usernameInput.value;
         if (/\d/.test(username) && !/\d$/.test(username)) {
-          alert("Numbers must appear only at the end");
+          alert(
+            "Numbers must appear only at the end and username has to have a number "
+          );
         }
       });
 
       // password input validation
       const passwordInput = document.querySelector('input[name="password"]');
-      passwordInput.addEventListener("change", () => {
+      passwordInput.addEventListener("blur", () => {
         const password = passwordInput.value;
         if (
           !/(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{4,})/.test(password)
@@ -191,8 +194,8 @@
         }
       };
 
-      usernameInput.addEventListener("change", isValid);
-      passwordInput.addEventListener("change", isValid);
+      usernameInput.addEventListener("blur", isValid);
+      passwordInput.addEventListener("blur", isValid);
     </script>
 
     <script
